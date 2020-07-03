@@ -1,4 +1,4 @@
-var main =document.createElement('div');
+var main =document.createElement('div'); 
 main.setAttribute('class','container p-3 my-3 bg-secondary');
 document.body.append(main);
 
