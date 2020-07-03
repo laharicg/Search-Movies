@@ -38,12 +38,14 @@ div1.appendChild(div12);
 
 var btn = document.getElementById('button');
 
+
     btn.addEventListener("click",()=>{
     var name=document.getElementById("input1");
     title=name.value;
     console.log(title);
-    var url=`https://www.omdbapi.com/?t=${title}&apikey=b4073afc`
-    async function search(){
+    const key='b4073afc';
+    var url=('https://www.omdbapi.com/?t='+title+'&apikey='+key)
+    async function searchMovie(){
         try{
 
             var omdbAPI=await fetch(url);
@@ -51,11 +53,11 @@ var btn = document.getElementById('button');
             console.log(data);
             //console.log(data.Poster);
             
-            var image=document.getElementById('poster');
-            image.src=data.Poster;
+            var img1=document.getElementById('poster');
+            img1.src=data.Poster;
 
             var movieDetails=document.getElementById("details");
-            movieDetails.innerHTML=`<div font size="xx-large"><b>${data.Title}</b></div><br>
+            movieDetails.innerHTML=`<div font size="xx-large"><b>${(data.Title).toUpperCase()}</b></div><br>
                         <b>IMDB Ratings:  </b> ${JSON.stringify(data.Ratings[0].Value).replace(/\"/g, "")}<br>
                         <b>Actors:&nbsp</b>${data.Actors}<br> 
                         <b>Director:&nbsp </b>${data.Director}<br>
@@ -69,6 +71,6 @@ var btn = document.getElementById('button');
                alert(err);  
         }
     }
-    search();
+    searchMovie();
     
 })
